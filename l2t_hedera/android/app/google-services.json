@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "884205281812",
+    "project_id": "l2t-hedera",
+    "storage_bucket": "l2t-hedera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884205281812:android:7fb97a0a640c0fc0d53d01",
+        "android_client_info": {
+          "package_name": "com.geneyllanes.l2t_hedera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884205281812-t5vfdeu27oib72qes4bbm5af4t8ljo2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACVcJcJfTtERt0Xu5Msu07E5LFl53Gr-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884205281812-t5vfdeu27oib72qes4bbm5af4t8ljo2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
