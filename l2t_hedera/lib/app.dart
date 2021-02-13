@@ -7,7 +7,6 @@ import 'package:l2t_hedera/progress/progress.dart';
 import 'package:l2t_hedera/sign_up/view/sign_up_page.dart';
 
 import 'auth/bloc/authentication_bloc.dart';
-import 'login/view/login_page.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -53,7 +52,7 @@ class _AppViewState extends State<AppView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SignUpPage(),
     );
   }
 }

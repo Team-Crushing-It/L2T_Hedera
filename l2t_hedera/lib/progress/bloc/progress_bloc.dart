@@ -22,8 +22,8 @@ class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
           progress.tick().listen((duration) => add(ProgressUpdated(duration)));
     } else if (event is ProgressUpdated) {
       yield ProgressLoading(event.count);
-      print(event.count);
-      if (event.count == 9) {
+
+      if (event.count == 10) {
         yield ProgressLoaded();
       }
     }

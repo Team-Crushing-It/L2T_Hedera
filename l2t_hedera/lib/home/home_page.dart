@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
                 percent: state.percentage / 10,
                 center: Center(
                   child: Text(
-                    'Please wait',
+                    ((state.percentage / 10) * 100).toString(),
                     style: TextStyle(fontSize: 30.0),
                   ),
                 ),
@@ -245,7 +245,7 @@ class Body extends StatelessWidget {
             child: Text(
               ''' Our mission is to make lifelong\n learners out of teachers and\n teachers out of students
               
-    Learn or Teach today !''',
+Learn or Teach today !''',
               style: TextStyle(
                 color: const Color(0xff263156),
                 fontSize: 16,
