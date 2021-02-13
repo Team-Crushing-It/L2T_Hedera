@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:l2t_hedera/home/home_page.dart';
 import 'package:l2t_hedera/sign_up/cubit/sign_up_cubit.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -14,13 +15,28 @@ class SignUpForm extends StatelessWidget {
             ..showSnackBar(
               const SnackBar(content: Text('Sign Up Failure')),
             );
+        } else if (state.status.isSubmissionSuccess) {
+          print('success');
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => HomePage()));
         }
       },
       child: Align(
         alignment: const Alignment(0, -1 / 3),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: ListView(
+          // mainAxisSize: MainAxisSize.min,
           children: [
+            SizedBox(height: 70),
+            Center(
+              child: Text(
+                'L2T',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 60),
             _EmailInput(),
             const SizedBox(height: 8.0),
             _PasswordInput(),
