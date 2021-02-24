@@ -5,6 +5,7 @@ import 'package:l2t_hedera/home/home_page.dart';
 import 'package:l2t_hedera/progress/bloc/progress_bloc.dart';
 import 'package:l2t_hedera/progress/progress.dart';
 import 'package:l2t_hedera/sign_up/view/sign_up_page.dart';
+import 'package:l2t_hedera/login/view/login_page.dart';
 
 import 'auth/bloc/authentication_bloc.dart';
 
@@ -52,7 +53,7 @@ class _AppViewState extends State<AppView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUpPage(),
+      home: LoginPage(),
     );
   }
 }
