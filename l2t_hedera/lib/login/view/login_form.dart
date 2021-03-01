@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-
+import 'package:l2t_hedera/home/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:l2t_hedera/login/cubit/login_cubit.dart';
@@ -23,6 +23,8 @@ class LoginForm extends StatelessWidget {
             ..showSnackBar(
               const SnackBar(content: Text('Authentication success')),
             );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => HomePage()));
         }
       },
       child: Align(
