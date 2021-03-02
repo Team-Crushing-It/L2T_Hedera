@@ -1,4 +1,7 @@
+import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'auth/authentication_flow.dart';
 
 class ScrollingNavbar extends StatefulWidget {
   final List<Widget> children;
@@ -56,45 +59,39 @@ class _ScrollingNavbarState extends State<ScrollingNavbar> {
 
   @override
   Widget build(BuildContext context) {
-    AppBar out = AppBar(
-      title: widget.headings.isEmpty
-          ? Row(
-              children: [
-                ...widget.children.map(
-                  (title) {
-                    var index = widget.children.indexOf(title);
+    final out = BlocBuilder<AuthenticationCubit, AuthenticationState>(
+      builder: (context, state) => state == AuthenticationState.authenticated
+          ? Text('Auth')
+          : Text('Unauth'),
+    );
 
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                          onTap: () => navigateTo(index),
-                          child: Text(widget.children[index].toString(),
-                              style: widget.appBar.titleTextStyle)),
-                    );
-                  },
-                )
-              ],
-            )
-          : Row(
-              children: [
-                ...widget.headings.map(
-                  (title) {
-                    var index = widget.headings.indexOf(title);
+    return Scaffold(
+      appBar: _buildAppBar(out),
+      body: PageView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: widget.children.length,
+        scrollDirection: widget.scrollDirection == null
+            ? Axis.vertical
+            : widget.scrollDirection,
+        controller: _controller,
+        itemBuilder: (BuildContext context, int itemIndex) {
+          return widget.children[itemIndex];
+        },
+      ),
+    );
+  }
 
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                          onTap: () => navigateTo(index),
-                          child: Text(widget.headings[index],
-                              style: widget.appBar?.titleTextStyle)),
-                    );
-                  },
-                )
-              ],
-            ),
-      leading: widget.appBar?.leading,
+  AppBar _buildAppBar(Widget out) {
+    return AppBar(
+      title: out,
+      leading: ElevatedButton(
+        onPressed: () => context.read<AuthenticationCubit>().login(),
+        child: Text('test auth'),
+      ),
+      // leading: widget.appBar?.leading,
       automaticallyImplyLeading: widget.appBar?.automaticallyImplyLeading,
       actions: widget.appBar?.actions,
+      // actions: [out],
       flexibleSpace: widget.appBar?.flexibleSpace,
       bottom: widget.appBar?.bottom,
       elevation: widget.appBar?.elevation,
@@ -118,21 +115,6 @@ class _ScrollingNavbarState extends State<ScrollingNavbar> {
       toolbarTextStyle: widget.appBar?.toolbarTextStyle,
       titleTextStyle: widget.appBar?.titleTextStyle,
       systemOverlayStyle: widget.appBar?.systemOverlayStyle,
-    );
-
-    return Scaffold(
-      appBar: out,
-      body: PageView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: widget.children.length,
-        scrollDirection: widget.scrollDirection == null
-            ? Axis.vertical
-            : widget.scrollDirection,
-        controller: _controller,
-        itemBuilder: (BuildContext context, int itemIndex) {
-          return widget.children[itemIndex];
-        },
-      ),
     );
   }
 }

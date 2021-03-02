@@ -1,6 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:l2t_hedera/auth/authentication_flow.dart' as auth_cubit;
 import 'package:l2t_hedera/home/view/home_page.dart';
 import 'package:l2t_hedera/progress/bloc/progress_bloc.dart';
 import 'package:l2t_hedera/progress/progress.dart';
@@ -33,6 +34,9 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (_) => ProgressBloc(Progress()),
           ),
+          BlocProvider(
+            create: (_) => auth_cubit.AuthenticationCubit(),
+          ),
         ],
         child: MaterialApp(home: HomeView()),
       ),
@@ -46,35 +50,25 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-
-  NavigatorState get _navigator => _navigatorKey.currentState;
-
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: Navbar(),
-    //   body: PageView.builder(
-
-    //   ),
-    // );
-
     return ScrollingNavbar(
-        appBar: Navbar(),
-        scrollDirection: Axis.horizontal,
-        headings: [
-          'one',
-          'two',
-          'three',
-          'four',
-          'five',
-        ],
-        children: [
-          HomePage(),
-          HomePage(),
-          HomePage(),
-          HomePage(),
-          HomePage(),
-        ]);
+      appBar: Navbar(),
+      scrollDirection: Axis.horizontal,
+      headings: [
+        'one',
+        'two',
+        'three',
+        'four',
+        'five',
+      ],
+      children: [
+        HomePage(),
+        HomePage(),
+        HomePage(),
+        HomePage(),
+        HomePage(),
+      ],
+    );
   }
 }
