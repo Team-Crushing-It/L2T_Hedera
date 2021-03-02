@@ -1,13 +1,14 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:l2t_hedera/home/home_page.dart';
+import 'package:l2t_hedera/home/view/home_page.dart';
 import 'package:l2t_hedera/progress/bloc/progress_bloc.dart';
 import 'package:l2t_hedera/progress/progress.dart';
-import 'package:l2t_hedera/sign_up/view/sign_up_page.dart';
-import 'package:l2t_hedera/login/view/login_page.dart';
+import 'package:l2t_hedera/navbar/view/navbar.dart';
 
 import 'auth/bloc/authentication_bloc.dart';
+
+import 'package:l2t_hedera/scrolling_navbar.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -33,27 +34,47 @@ class App extends StatelessWidget {
             create: (_) => ProgressBloc(Progress()),
           ),
         ],
-        child: AppView(),
+        child: MaterialApp(home: HomeView()),
       ),
     );
   }
 }
 
-class AppView extends StatefulWidget {
+class HomeView extends StatefulWidget {
   @override
-  _AppViewState createState() => _AppViewState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _AppViewState extends State<AppView> {
+class _HomeViewState extends State<HomeView> {
   final _navigatorKey = GlobalKey<NavigatorState>();
 
   NavigatorState get _navigator => _navigatorKey.currentState;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-    );
+    // return Scaffold(
+    //   appBar: Navbar(),
+    //   body: PageView.builder(
+
+    //   ),
+    // );
+
+    return ScrollingNavbar(
+        appBar: Navbar(),
+        scrollDirection: Axis.horizontal,
+        headings: [
+          'one',
+          'two',
+          'three',
+          'four',
+          'five',
+        ],
+        children: [
+          HomePage(),
+          HomePage(),
+          HomePage(),
+          HomePage(),
+          HomePage(),
+        ]);
   }
 }

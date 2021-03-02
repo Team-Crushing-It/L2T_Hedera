@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:l2t_hedera/home/home_page.dart';
+import 'package:l2t_hedera/home/view/home_page.dart';
 import 'package:l2t_hedera/sign_up/cubit/sign_up_cubit.dart';
 
 class SignUpForm extends StatelessWidget {
