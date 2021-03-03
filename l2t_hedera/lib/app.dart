@@ -52,23 +52,28 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return ScrollingNavbar(
+    return Scaffold(
       appBar: Navbar(),
-      scrollDirection: Axis.horizontal,
-      headings: [
-        'one',
-        'two',
-        'three',
-        'four',
-        'five',
-      ],
-      children: [
-        HomePage(),
-        HomePage(),
-        HomePage(),
-        HomePage(),
-        HomePage(),
-      ],
+      body: Container(),
     );
+
+    // return ScrollingNavbar(
+    //   appBar: Navbar(),
+    //   scrollDirection: Axis.horizontal,
+    //   headings: [
+    //     'one',
+    //     'two',
+    //     'three',
+    //     'four',
+    //     'five',
+    //   ],
+    //   children: [
+    //     HomePage(),
+    //     HomePage(),
+    //     HomePage(),
+    //     HomePage(),
+    //     HomePage(),
+    //   ],
+    // );
   }
 }
